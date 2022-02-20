@@ -1,0 +1,35 @@
+﻿@model Department
+@{
+    ViewData["Title"] = "NewDepartment";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@section Body{ 
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+            <form method="post">
+                <div class="form-group">
+
+                    <label class="control-label" asp-for="name"></label>
+                    <input type="text" class="form-control" asp-for="name">
+                    <span asp-validation-for="name"></span>
+                    <input type="text" asp-for="id" style="display:none" />
+                </div>
+                <div class="form-group">
+                    @if ((bool)ViewData["Edit"] != true)
+                    {
+
+                        <input type="submit" class="btn btn-primary" value="Create" asp-action="Create">
+                    }
+                    else
+                    {
+                        <input type="submit" class="btn btn-primary" value="Update" asp-action="Update">
+
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+}
+

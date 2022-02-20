@@ -1,0 +1,59 @@
+﻿@model SignUpViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    
+}
+
+@section Body{
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4">
+                <form method="post">
+                    <div class="form-group">
+
+                        <label class="control-label" asp-for="signUpModel.name"></label>
+                        <input type="text" class="form-control" asp-for="signUpModel.name">
+                        <span asp-validation-for="signUpModel.name"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="control-label" asp-for="signUpModel.email"> </label>
+                        <input type="text" class="form-control" asp-for="signUpModel.email">
+                        <span asp-validation-for="signUpModel.email"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="control-label" asp-for="signUpModel.password"></label>
+                        <input type="password" class="form-control" asp-for="signUpModel.password">
+                        <span asp-validation-for="signUpModel.password"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="control-label" asp-for="signUpModel.confirmpassword"></label>
+                        <input type="password" class="form-control" asp-for="signUpModel.confirmpassword">
+                        <span asp-validation-for="signUpModel.confirmpassword"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="control-label" asp-for="signUpModel.RoleId"></label>
+                        <select  class="form-control" asp-items='new SelectList(Model.roles,"Id","Name")' asp-for="signUpModel.RoleId">
+                           
+                        </select>
+                        <span asp-validation-for="signUpModel.RoleId"></span>
+                    </div>
+                    <div class="form-group">
+
+
+                        <input type="submit" class="btn btn-primary" value="Create" asp-action="CreateAccount">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+}
+

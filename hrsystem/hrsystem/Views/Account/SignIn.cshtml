@@ -1,0 +1,47 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "SignIn";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+@section Body{
+    <div class="container">
+
+        <div class="row">
+            <div class="col-xs-4">
+                <form method="post">
+
+                    <div class="form-group">
+
+                        <label class="control-label" asp-for="Email"> </label>
+                        <input type="text" class="form-control" asp-for="Email">
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <label class="control-label" asp-for="Password"></label>
+                        <input type="password" class="form-control" asp-for="Password">
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <input type="checkbox" asp-for="RememberMe">
+                        <label asp-for="RememberMe" class="control-label"></label>
+                    </div>
+
+                    <div class="form-group">
+
+
+                        <input type="submit" class="btn btn-primary" value="LogIn" asp-action="LogIn">
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                @ViewData["ErrorMessage"]
+            </div>
+        </div>
+    </div>
+}

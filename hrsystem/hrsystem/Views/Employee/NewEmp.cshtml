@@ -1,0 +1,73 @@
+﻿@model EmployeeViewModel
+
+@{
+    ViewData["Title"] = "NewEmp";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@section Body{
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-4">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label class="control-label" asp-for="employee.name"></label>
+                        <input type="text" class="form-control" asp-for="employee.name">
+                        <span asp-validation-for="employee.name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" asp-for="employee.phone"></label>
+                        <input type="text" class="form-control" asp-for="employee.phone">
+                        <span asp-validation-for="employee.phone"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" asp-for="employee.email"></label>
+                        <input type="text" class="form-control" asp-for="employee.email">
+                        <span asp-validation-for="employee.email"></span>
+                        <input  type="text" asp-for="employee.id" style="display:none"/>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" >Gender</label>
+                        <select type="text" class="form-control" asp-for="employee.gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+
+                        </select>
+                        <span asp-validation-for="employee.gender"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" asp-for="employee.birtodate"></label>
+                        <input type="text" class="form-control" asp-for="employee.birtodate">
+                        <span asp-validation-for="employee.birtodate"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" asp-for="imgpath" style="display:none" id="fuimg" />
+                        <label for="fuimg" class="btn btn-primary">Upload</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" asp-for="employee.dateofjoining"></label>
+                        <input type="text" class="form-control" asp-for="employee.dateofjoining">
+                        <span asp-validation-for="employee.dateofjoining"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" >Department</label>
+                        <select type="text" class="form-control" asp-items='new SelectList(Model.departments,"id","name")' asp-for="employee.dept_id"></select>
+                         </div>
+                    <div class="form-group">
+                        @if ((bool)ViewData["Edit"] == true)
+                        {
+
+                            <input type="submit" class="btn btn-primary" value="Update" asp-action="Update">
+                        }
+                        else
+                        {
+                            <input type="submit" class="btn btn-primary" value="Save" asp-action="Insert">
+
+                        }
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}
+

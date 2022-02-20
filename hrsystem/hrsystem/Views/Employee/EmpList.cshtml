@@ -1,0 +1,53 @@
+﻿@model List<Employee>
+@{
+    ViewData["Title"] = "EmpList";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@section Body{
+
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Name Of Department</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (Employee item in Model)
+                    {
+                    <tr>
+                        <td>@item.name</td>
+                        <td>@item.phone</td>
+                        <td>@item.department.name</td>
+
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.id" ><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a asp-action="Delete" asp-route-id="@item.id" >
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="form-group">
+                    <form method="post">
+                        <input type="submit" asp-action="ExportToExcel" class="btn btn-primary" value="ExportToExcel" />
+
+                    </form>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
